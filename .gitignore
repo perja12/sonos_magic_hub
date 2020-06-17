@@ -1,0 +1,8 @@
+*~
+*.csv
+*.tsv
+*.xml
+**/*.kicad_pcb-bak
+**/*.sch-bak
+**/*.bak
+**/fp-info-cache
