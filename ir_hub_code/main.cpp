@@ -39,6 +39,11 @@ void blink(uint8_t num) {
 }
 
 void setup() {
+  // The internal oscillator seems to be pretty accurate from factory for ATTiny85V.
+  // Test sketch that generates 10 kHz PWM measures approx 10.07 kHz with
+  // OSCCAL -= 1.
+  OSCCAL -= 1;
+
   set_sleep_mode(SLEEP_MODE_IDLE);
   irrecv.enableIRIn();
 
@@ -74,18 +79,19 @@ void send_last_code() {
 
 void loop() {
   decode_results results;
+  uint8_t found_code = 0;
 
   // The IR library uses timer1 to collect raw IR data.
   // This is done in chunks of 50 ms. Repeatedly check for
   // data until there is data to decode or there is a timeout.
   uint32_t decode_start = millis();
-  while (!irrecv.decode(&results)) {
+  while ((found_code = irrecv.decode(&results)) == 0) {
     if ((millis() - decode_start) > 100) {
       break;
     }
   }
 
-  if (irrecv.decode(&results)) {
+  if (found_code) {
     if (results.decode_type == NEC) {
       blink(1);
       switch(results.value) {
