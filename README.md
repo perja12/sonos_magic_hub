@@ -1,5 +1,9 @@
 # Sonos Magic Hub
 
+_UPDATE 2020-09-13:_ This workaround isn't needed anymore! Go to "device connector" in the menus of the LG TV and setup a new soundbar. When you come to the manufacturer selection you won't see Sonos listed, but if you use the search box and search for Sonos it will show up (I'm pretty sure it wasn't there before!). Now you should be able to control the Sonos Playbar with the remote when the TV is on.
+
+Next step is to open the Sonos app (S1), go to the settings for the Playbar and follow the instructions for setting up a remote ("Remote Control Setup"). And voilà: you can now control the Playbar with the MagicRemote with TV both on and off.
+
 ![Project pictures](images/sonos_magic_hub.jpg)
 
 This project contains firmware and hardware design files for using the LG Magic Remote that comes with LG OLED C9 TV with a Sonos Playbar. Sonos Playbar already has support for universal remotes, but the LG Magic Remote sends one set of codes when the TV is on and another set when the TV is off. So controlling the volume up, down and mute works fine when the TV is on, but not when it is off. It's not clear why LG has done it this way, but probably it is for controlling other LG devices.
